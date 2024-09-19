@@ -17,6 +17,14 @@ builder.Services.AddDbContext<PersonneContext>(
 
 // Add repository FROM DAL
 builder.Services.AddScoped<IPersonneRepository, PersonneRepository>();
+#region Singleton, Scoped et Transient
+// Une instance pour périmètre d'action
+//builder.Services.AddScoped<IPersonneRepository, PersonneRepository>();
+// Une instance par demande
+//builder.Services.AddTransient<IPersonneRepository, PersonneRepository>();
+// Une instance pour tout le projet
+//builder.Services.AddSingleton<IPersonneRepository, PersonneRepository>();
+#endregion
 
 // Add servies From BLL
 builder.Services.AddScoped<IPersonneService, PersonneService>();
