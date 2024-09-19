@@ -12,7 +12,7 @@ using StructureEFSimple.DAL.Database;
 namespace StructureEFSimple.DAL.Migrations
 {
     [DbContext(typeof(PersonneContext))]
-    [Migration("20240918042737_initDb")]
+    [Migration("20240919184325_initDb")]
     partial class initDb
     {
         /// <inheritdoc />
@@ -29,7 +29,8 @@ namespace StructureEFSimple.DAL.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("Id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -43,9 +44,7 @@ namespace StructureEFSimple.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ReferentId")
-                        .IsUnique()
-                        .HasFilter("[ReferentId] IS NOT NULL");
+                    b.HasIndex("ReferentId");
 
                     b.ToTable("Personne", (string)null);
 
@@ -66,8 +65,8 @@ namespace StructureEFSimple.DAL.Migrations
             modelBuilder.Entity("StructureEFSimple.DAL.Entities.Personne", b =>
                 {
                     b.HasOne("StructureEFSimple.DAL.Entities.Personne", "Referent")
-                        .WithOne()
-                        .HasForeignKey("StructureEFSimple.DAL.Entities.Personne", "ReferentId");
+                        .WithMany()
+                        .HasForeignKey("ReferentId");
 
                     b.Navigation("Referent");
                 });

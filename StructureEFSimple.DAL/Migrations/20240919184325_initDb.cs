@@ -43,9 +43,7 @@ namespace StructureEFSimple.DAL.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Personne_ReferentId",
                 table: "Personne",
-                column: "ReferentId",
-                unique: true,
-                filter: "[ReferentId] IS NOT NULL");
+                column: "ReferentId");
         }
 
         /// <inheritdoc />

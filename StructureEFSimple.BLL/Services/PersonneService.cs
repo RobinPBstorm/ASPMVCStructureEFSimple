@@ -18,7 +18,7 @@ namespace StructrureEFSimple.BLL.Services
             throw new NotImplementedException();
         }
 
-        public void Delete(Personne entity)
+        public bool Delete(Personne entity)
         {
             throw new NotImplementedException();
         }
@@ -40,7 +40,7 @@ namespace StructrureEFSimple.BLL.Services
             return personne;
         }
 
-        public Personne Update(Personne entity)
+        public bool Update(Personne entity)
         {
             throw new NotImplementedException();
         }

@@ -11,7 +11,7 @@ namespace StructureEFSimple.DAL.Repositories.Interfaces
         public List<T> GetAll();
         public T? GetOneById(Key key);
         public T Create(T entity);
-        public T Update(T entity);
-        public void Delete(T entity);
+        public bool Update(T entity);
+        public bool Delete(T entity);
     }
 }

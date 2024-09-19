@@ -1,19 +1,16 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using StructrureEFSimple.BLL.Services.Interfaces;
 using StructrureEFSimple.Mapper;
 using StructrureEFSimple.Models;
-using StructrureEFSimple.BLL.Services.Interfaces;
-using System.Diagnostics;
 using StructureEFSimple.BLL.Models.Exceptions;
 
 namespace StructrureEFSimple.Controllers
 {
-    public class HomeController : Controller
+    public class PersonneController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly IPersonneService _service;
-        public HomeController(ILogger<HomeController> logger, IPersonneService service)
+        public PersonneController(IPersonneService service)
         {
-            _logger = logger;
             _service = service;
         }
 
@@ -33,22 +30,11 @@ namespace StructrureEFSimple.Controllers
 
                 return View(personne);
             }
-            catch(PersonneNotFoundException pnfe)
+            catch (PersonneNotFoundException pnfe)
             {
                 TempData["Message"] = pnfe.Message;
-                return RedirectToAction(nameof(HomeController.Index));
+                return RedirectToAction(nameof(PersonneController.Index));
             }
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

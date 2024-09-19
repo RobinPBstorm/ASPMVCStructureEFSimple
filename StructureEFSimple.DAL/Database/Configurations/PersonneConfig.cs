@@ -15,12 +15,21 @@ namespace StructureEFSimple.DAL.Database.Configurations
         {
             builder.ToTable("Personne");
 
+            // Id indiqué explicitement en primary Key
+            builder.Property(p => p.Id)
+                .HasColumnName("Id");
+            builder.HasKey(p => p.Id);
+
+            // Propriété Nom avec quelques contraintes
             builder.Property(p => p.Nom)
                 .HasMaxLength(100)
                 .IsRequired();
 
+            // Relation One to Many explicit
             builder.HasOne(p => p.Referent)
-                .WithOne();
+                .WithMany()
+                .HasPrincipalKey(p => p.Id)
+                .HasForeignKey(p => p.ReferentId);
 
         }
     }

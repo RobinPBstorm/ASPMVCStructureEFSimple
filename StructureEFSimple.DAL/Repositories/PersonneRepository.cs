@@ -23,7 +23,7 @@ namespace StructureEFSimple.DAL.Repositories
             throw new NotImplementedException();
         }
 
-        public void Delete(Personne entity)
+        public bool Delete(Personne entity)
         {
             throw new NotImplementedException();
         }
@@ -41,7 +41,7 @@ namespace StructureEFSimple.DAL.Repositories
                 .FirstOrDefault(p => p.Id == key);
 		}
 
-        public Personne Update(Personne entity)
+        public bool Update(Personne entity)
         {
             throw new NotImplementedException();
         }
